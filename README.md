@@ -10,6 +10,13 @@
 
 > **Scripts and configurations to keep the system clock synchronized**, useful when the CMOS battery is failing. Content in English; file names in kebab-case.
 
+<!-- Demo visual: captura del README renderizado. -->
+<div align="center">
+
+[![Demo of TimeWindows Fix](docs/demo-timewindows-fix.png)](docs/demo-timewindows-fix.png)
+
+</div>
+
 ## Why this fix exists
 
 `w32time` (the Windows Time service) syncs exclusively over **NTP/UDP port 123**, using port 123 as its source port. Many routers and ISPs (common in Latin America) silently drop NTP replies addressed to source port 123, so `w32tm /resync` reports *"The computer did not resync because no time data was available"* and the clock stays on the local CMOS clock. There is no way to make w32time use another port.
